@@ -10,7 +10,7 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/english_javaee?createDatabaseIfNotExist=TRUE</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.connection.password">1234</property>
         <!-- Affiche les requêtes SQL générées par Hibernate dans la console -->
         <property name="show_sql">true</property>
         <!-- Recrée les tables de la base de données à chaque démarrage -->
