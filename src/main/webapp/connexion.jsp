@@ -4,7 +4,7 @@
 <head>
     <title>Connexion | English Game</title>
     <meta charset="UTF-8">
-    <link href="/style/style.css" rel="stylesheet" type="text/css"/>
+    <link href="style/style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <form action="connexion" method="post">

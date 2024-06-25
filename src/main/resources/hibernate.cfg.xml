@@ -10,12 +10,26 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/english_javaee?createDatabaseIfNotExist=TRUE</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">1234</property>
+        <property name="hibernate.connection.password"></property>
+
         <!-- Affiche les requêtes SQL générées par Hibernate dans la console -->
-        <property name="show_sql">true</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
         <!-- Recrée les tables de la base de données à chaque démarrage -->
         <property name="hibernate.hbm2ddl.auto">update</property>
 
+        <!-- Pool de connexions -->
+        <property name="hibernate.c3p0.min_size">5</property>
+        <property name="hibernate.c3p0.max_size">20</property>
+        <property name="hibernate.c3p0.timeout">300</property>
+        <property name="hibernate.c3p0.max_statements">50</property>
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
+
         <!-- Classes de mapping -->
+        <mapping class="com.estiam.englishjavaee.pojos.Joueur"/>
+        <mapping class="com.estiam.englishjavaee.pojos.Partie"/>
+        <mapping class="com.estiam.englishjavaee.pojos.Verbe"/>
+        <mapping class="com.estiam.englishjavaee.pojos.Ville"/>
     </session-factory>
 </hibernate-configuration>

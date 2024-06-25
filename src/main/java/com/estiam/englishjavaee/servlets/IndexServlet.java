@@ -1,22 +1,35 @@
 package com.estiam.englishjavaee.servlets;
 
+import com.estiam.englishjavaee.pojos.Joueur;
+import com.estiam.englishjavaee.services.JoueurService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.hibernate.Session;
 
 import java.io.IOException;
 
-@WebServlet(name = "indexServlet", urlPatterns = {"", "/index"})
 public class IndexServlet extends HttpServlet {
-    @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,
-        ServletException {
-            // Session session = HibernateUtil.getSessionFactory().openSession();
+    private JoueurService joueurService = new JoueurService();
 
-            // Charge la vue
-            this.getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("index.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String email = req.getParameter("email");
+        String motDePasse = req.getParameter("motDePasse");
+
+        Joueur joueur = joueurService.login(email, motDePasse);
+        if (joueur != null) {
+            req.getSession().setAttribute("joueur", joueur);
+            resp.sendRedirect("jeu");
+        } else {
+            req.setAttribute("errorMessage", "Email ou Mot de passe incorrect");
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        }
     }
 }
