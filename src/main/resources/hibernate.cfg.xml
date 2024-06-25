@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- Connexion à une base de données MySQL -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/english_javaee?createDatabaseIfNotExist=TRUE</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property>
+        <!-- Affiche les requêtes SQL générées par Hibernate dans la console -->
+        <property name="show_sql">true</property>
+        <!-- Recrée les tables de la base de données à chaque démarrage -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Classes de mapping -->
+    </session-factory>
+</hibernate-configuration>
